@@ -1,0 +1,6 @@
+name: AcidIslands-Recoded
+version: '${project.version}'
+main: me.yoshiro09.acidislands.AcidIslandsMain
+api-version: '1.19'
+loadbefore: [SuperiorSkyblock2]
+authors: [Yoshiiro_, Ome_R]

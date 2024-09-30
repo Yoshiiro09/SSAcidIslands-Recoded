@@ -1,0 +1,25 @@
+######################################################
+##                                                  ##
+##      SuperiorSkyblock2 - AcidIslands-Recoded     ##
+##          Developed by Yoshiiro_ & Ome_R          ##
+##                                                  ##
+######################################################
+
+# In questa sezione puoi scegliere quale tipologia di danno usare e configurare i loro vari parametri.
+damage:
+  # Tipologie esistenti: DEFAULT, POISON.
+  #######################################
+  # DEFAULT: Utilizza il metodo predefinito del plugin con danno ogni secondo che aumenta col tempo.
+  # POISON: Dà l'effetto di veleno al giocatore e il danno durerà nel tempo.
+  type: DEFAULT
+  # Parametri del danno di tipo DEFAULT
+  default:
+    # Il primo danno che verrà inflitto ai giocatori
+    first-damage: 0.5
+    # Ogni secondo, il danno sopra può essere moltiplicato. Puoi impostare il valore del moltiplicatore da qui.
+    multiplier: 1.2
+  poison:
+    # Scegli la durata della pozione di veleno in Ticks.
+    duration: 200
+    # Scegli il livello della pozione di veleno.
+    level: 2
