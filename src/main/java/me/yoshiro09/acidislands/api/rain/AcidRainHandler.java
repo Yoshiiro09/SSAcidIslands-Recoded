@@ -31,9 +31,11 @@ public class AcidRainHandler {
     }
 
     public void updateAcidRainStatus(boolean raining) {
-        if (!raining && this.acidRainActive) {
-            this.acidRainActive = false;
-            Bukkit.broadcast(new TextComponent(String.format("[DEBUG] La pioggia acida nel mondo %s è appena terminata.", this.worldName)));
+        if (!raining) {
+            if (this.acidRainActive) {
+                this.acidRainActive = false;
+                Bukkit.broadcast(new TextComponent(String.format("[DEBUG] La pioggia acida nel mondo %s è appena terminata.", this.worldName)));
+            }
             return;
         }
 
