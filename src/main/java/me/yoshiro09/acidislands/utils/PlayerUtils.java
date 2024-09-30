@@ -1,5 +1,6 @@
 package me.yoshiro09.acidislands.utils;
 
+import me.yoshiro09.acidislands.api.AcidIslandsAPI;
 import org.bukkit.GameMode;
 import org.bukkit.Location;
 import org.bukkit.Material;
@@ -14,7 +15,8 @@ public class PlayerUtils {
 
     public static boolean isInWater(Player player) {
         Block playerBlock = player.getLocation().getBlock();
-        return isBlockInWater(playerBlock) || isBlockInWater(player.getEyeLocation().getBlock());
+        return isBlockInWater(playerBlock) || isBlockInWater(player.getEyeLocation().getBlock())
+                || (player.getWorld().hasStorm() && AcidIslandsAPI.getInstance().getAcidRainHandler().isAcidRainActive());
     }
 
     private static boolean isBlockInWater(Block block) {

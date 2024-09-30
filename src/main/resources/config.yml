@@ -7,10 +7,11 @@
 
 # In questa sezione puoi scegliere quale tipologia di danno usare e configurare i loro vari parametri.
 damage:
-  # Tipologie esistenti: DEFAULT, POISON.
+  # Tipologie esistenti: DEFAULT, POISON, NONE
   #######################################
   # DEFAULT: Utilizza il metodo predefinito del plugin con danno ogni secondo che aumenta col tempo.
   # POISON: Dà l'effetto di veleno al giocatore e il danno durerà nel tempo.
+  # NONE: Nessun danno dall'acqua.
   type: DEFAULT
   # Parametri del danno di tipo DEFAULT
   default:
@@ -23,3 +24,11 @@ damage:
     duration: 200
     # Scegli il livello della pozione di veleno.
     level: 2
+
+# In questa sezione puoi configurare la frequenza delle piogge acide e il mondo.
+rain:
+  # Mondo dove le piogge possono essere anche acide.
+  world: Isola
+  # Quando inizia a piovere questo valore viene usato per decidere se sarà una pioggia acida o no.
+  # Inserisci un valore tra 0 e 1 dove 0 indica che tutte le piogge saranno normali e 1 indica che saranno tutte acide.
+  rarity-percentage: 0.6

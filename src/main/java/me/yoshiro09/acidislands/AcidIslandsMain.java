@@ -4,6 +4,7 @@ import com.bgsoftware.superiorskyblock.api.SuperiorSkyblock;
 import com.bgsoftware.superiorskyblock.api.commands.SuperiorCommand;
 import com.bgsoftware.superiorskyblock.api.modules.PluginModule;
 import me.yoshiro09.acidislands.api.AcidIslandsAPI;
+import me.yoshiro09.acidislands.listeners.AcidRainListener;
 import me.yoshiro09.acidislands.listeners.TouchedWaterListener;
 import org.bukkit.event.Listener;
 import org.bukkit.plugin.java.JavaPlugin;
@@ -21,7 +22,7 @@ public final class AcidIslandsMain extends PluginModule {
     public void onEnable(SuperiorSkyblock superiorSkyblock) {
         this.plugin = (JavaPlugin) superiorSkyblock;
         try {
-            new AcidIslandsAPI().loadSettings();
+            new AcidIslandsAPI();
         } catch (IllegalAccessException e) {
             throw new RuntimeException(e);
         }
@@ -35,7 +36,7 @@ public final class AcidIslandsMain extends PluginModule {
 
     @Override
     public Listener[] getModuleListeners(SuperiorSkyblock superiorSkyblock) {
-        return new Listener[]{new TouchedWaterListener()};
+        return new Listener[]{new TouchedWaterListener(), new AcidRainListener()};
     }
 
     @Override
