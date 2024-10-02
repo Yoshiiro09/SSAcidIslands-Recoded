@@ -2,14 +2,11 @@ package me.yoshiro09.acidislands.api.settings;
 
 import me.yoshiro09.acidislands.AcidIslandsMain;
 import me.yoshiro09.acidislands.api.settings.enums.SettingsKey;
-import org.bukkit.configuration.Configuration;
 import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import java.io.File;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Objects;
+import java.util.*;
 
 public class SettingsHandler {
     private final static String CONFIG_FILE_NAME = "config.yml";
@@ -68,5 +65,13 @@ public class SettingsHandler {
 
     public long getSettingAsLong(SettingsKey key) {
         return Long.parseLong(this.settings.get(key));
+    }
+
+    public List<String> getSettingAsList(SettingsKey key) {
+        String val = this.settings.get(key);
+        val = val.substring(1, val.length() - 2);
+        final List<String> arr = new ArrayList<>();
+        for (String row : val.split(", ")) arr.add(row);
+        return arr;
     }
 }

@@ -3,8 +3,7 @@ package me.yoshiro09.acidislands.api.rain;
 import me.yoshiro09.acidislands.api.AcidIslandsAPI;
 import me.yoshiro09.acidislands.api.settings.SettingsHandler;
 import me.yoshiro09.acidislands.api.settings.enums.SettingsKey;
-import net.md_5.bungee.api.chat.TextComponent;
-import org.bukkit.Bukkit;
+import me.yoshiro09.acidislands.utils.MessagesSender;
 import org.bukkit.World;
 
 import java.util.Random;
@@ -31,10 +30,12 @@ public class AcidRainHandler {
     }
 
     public void updateAcidRainStatus(boolean raining) {
+        final SettingsHandler settingsHandler = AcidIslandsAPI.getInstance().getSettingsHandler();
+
         if (!raining) {
             if (this.acidRainActive) {
                 this.acidRainActive = false;
-                Bukkit.broadcast(new TextComponent(String.format("[DEBUG] La pioggia acida nel mondo %s è appena terminata.", this.worldName)));
+                MessagesSender.broadcast(settingsHandler.getSetting(SettingsKey.ACIDRAIN_MSG_ENDED));
             }
             return;
         }
@@ -43,6 +44,6 @@ public class AcidRainHandler {
         if (randomValue >= rarityPercentage) return;
 
         this.acidRainActive = true;
-        Bukkit.broadcast(new TextComponent(String.format("[DEBUG] La pioggia acida nel mondo %s è appena iniziata. [Percentuale: %s]", this.worldName, this.rarityPercentage * 100)));
+        MessagesSender.broadcast(settingsHandler.getSetting(SettingsKey.ACIDRAIN_MSG_STARTED));
     }
 }

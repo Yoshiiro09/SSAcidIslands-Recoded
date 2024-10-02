@@ -5,9 +5,12 @@ import org.bukkit.GameMode;
 import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.block.Block;
+import org.bukkit.entity.Boat;
+import org.bukkit.entity.Entity;
 import org.bukkit.entity.Player;
 
 import java.util.EnumSet;
+import java.util.Objects;
 import java.util.Optional;
 
 public class PlayerUtils {
@@ -15,6 +18,10 @@ public class PlayerUtils {
 
     public static boolean isInWater(Player player) {
         Block playerBlock = player.getLocation().getBlock();
+
+        final Entity riding = player.getVehicle();
+        if (Objects.nonNull(riding) && riding instanceof Boat) return false;
+
         return isBlockInWater(playerBlock) || isBlockInWater(player.getEyeLocation().getBlock())
                 || (player.getWorld().hasStorm() && AcidIslandsAPI.getInstance().getAcidRainHandler().isAcidRainActive());
     }

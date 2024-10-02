@@ -20,10 +20,13 @@ damage:
     # Ogni secondo, il danno sopra può essere moltiplicato. Puoi impostare il valore del moltiplicatore da qui.
     multiplier: 1.2
   poison:
-    # Scegli la durata della pozione di veleno in Ticks.
-    duration: 200
-    # Scegli il livello della pozione di veleno.
-    level: 2
+    # Imposta i vari livelli di veleno nel formato "DOPO QUANTI SECONDI/LIVELLO POZIONE/DURATA"
+    levels:
+      - "0/1/5"
+      - "5/2/10"
+      - "10/3/15"
+      - "15/4/20"
+      - "20/5/30"
 
 # In questa sezione puoi configurare la frequenza delle piogge acide e il mondo.
 rain:
@@ -32,3 +35,7 @@ rain:
   # Quando inizia a piovere questo valore viene usato per decidere se sarà una pioggia acida o no.
   # Inserisci un valore tra 0 e 1 dove 0 indica che tutte le piogge saranno normali e 1 indica che saranno tutte acide.
   rarity-percentage: 0.6
+  # Messaggi che verranno inviati in chat agli utenti online per avvisare dell'inizio o della fine della pioggia acida.
+  messages:
+    acidrain-started: "&e&lAcidIsland | &7Una pioggia acida è iniziata nel mondo &fIsola&7. Mettiti al riparo prima che sia troppo tardi."
+    acidrain-ended: "&e&lAcidIsland | &7La pioggia acida nel mondo &fIsola &7è finalmente terminata."
