@@ -33,7 +33,7 @@ public class PoisonDamage extends BaseDamage {
         final PotionEffect potion = getPotionEffect();
         if (Objects.isNull(potion)) return;
 
-        if (player.getHealth() <= 0.5) player.damage(player.getHealth());
+        if (player.getHealth() <= 1) player.damage(player.getHealth());
         else this.player.addPotionEffect(potion);
     }
 
