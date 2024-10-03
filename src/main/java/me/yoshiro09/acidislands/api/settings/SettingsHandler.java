@@ -1,11 +1,12 @@
 package me.yoshiro09.acidislands.api.settings;
 
 import me.yoshiro09.acidislands.AcidIslandsMain;
+import me.yoshiro09.acidislands.api.files.FileManager;
 import me.yoshiro09.acidislands.api.settings.enums.SettingsKey;
+import me.yoshiro09.acidislands.utils.FileLoader;
 import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.plugin.java.JavaPlugin;
 
-import java.io.File;
 import java.util.*;
 
 public class SettingsHandler {
@@ -21,7 +22,7 @@ public class SettingsHandler {
 
         final AcidIslandsMain module = AcidIslandsMain.getInstance();
         final JavaPlugin plugin = module.getPlugin();
-        YamlConfiguration config = getConfigFile(module);
+        YamlConfiguration config = FileManager.getFileManager(FileManager.FileType.CONFIG).getYamlConfiguration();
 
         for (SettingsKey key : SettingsKey.values()) {
             final String value = config.getString(key.getPath());
@@ -35,12 +36,6 @@ public class SettingsHandler {
         }
 
         plugin.getLogger().info(String.format("[ACIDISLANDS-RECODED] Caricate %s impostazioni.", this.settings.size()));
-    }
-
-    private YamlConfiguration getConfigFile(AcidIslandsMain module) {
-        File file = new File(module.getModuleFolder(), CONFIG_FILE_NAME);
-        if(!file.exists())  module.saveResource(CONFIG_FILE_NAME);
-        return YamlConfiguration.loadConfiguration(file);
     }
 
     public String getSetting(SettingsKey key) {

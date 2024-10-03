@@ -4,14 +4,22 @@ import com.bgsoftware.superiorskyblock.api.SuperiorSkyblock;
 import com.bgsoftware.superiorskyblock.api.commands.SuperiorCommand;
 import com.bgsoftware.superiorskyblock.api.modules.PluginModule;
 import me.yoshiro09.acidislands.api.AcidIslandsAPI;
+import me.yoshiro09.acidislands.api.files.FileManager;
+import me.yoshiro09.acidislands.api.purifier.PurifyingConduit;
 import me.yoshiro09.acidislands.listeners.AcidRainListener;
+import me.yoshiro09.acidislands.listeners.PurifyingConduitListener;
 import me.yoshiro09.acidislands.listeners.TouchedWaterListener;
+import org.bukkit.configuration.serialization.ConfigurationSerialization;
 import org.bukkit.event.Listener;
 import org.bukkit.plugin.java.JavaPlugin;
 
 public final class AcidIslandsMain extends PluginModule {
     private static AcidIslandsMain instance;
     private JavaPlugin plugin;
+
+    static {
+        ConfigurationSerialization.registerClass(PurifyingConduit.class, "PurifyingConduit");
+    }
 
     public AcidIslandsMain() {
         super("acidislands", "Yoshiiro_");
@@ -22,7 +30,9 @@ public final class AcidIslandsMain extends PluginModule {
     public void onEnable(SuperiorSkyblock superiorSkyblock) {
         this.plugin = (JavaPlugin) superiorSkyblock;
         try {
-            new AcidIslandsAPI();
+            FileManager.loadFiles();
+            final AcidIslandsAPI api = new AcidIslandsAPI();
+            api.loadPurifyingConduits();
         } catch (IllegalAccessException e) {
             throw new RuntimeException(e);
         }
@@ -36,7 +46,7 @@ public final class AcidIslandsMain extends PluginModule {
 
     @Override
     public Listener[] getModuleListeners(SuperiorSkyblock superiorSkyblock) {
-        return new Listener[]{new TouchedWaterListener(), new AcidRainListener()};
+        return new Listener[]{new TouchedWaterListener(), new AcidRainListener(), new PurifyingConduitListener()};
     }
 
     @Override

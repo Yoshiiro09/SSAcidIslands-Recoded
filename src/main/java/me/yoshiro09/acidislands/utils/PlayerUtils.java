@@ -22,8 +22,22 @@ public class PlayerUtils {
         final Entity riding = player.getVehicle();
         if (Objects.nonNull(riding) && riding instanceof Boat) return false;
 
-        return isBlockInWater(playerBlock) || isBlockInWater(player.getEyeLocation().getBlock())
-                || (player.getWorld().hasStorm() && AcidIslandsAPI.getInstance().getAcidRainHandler().isAcidRainActive());
+        return isBlockInWater(playerBlock) || isBlockInWater(player.getEyeLocation().getBlock());
+    }
+
+    public static boolean isInRain(Player player) {
+        if (!player.getWorld().hasStorm() || !AcidIslandsAPI.getInstance().getAcidRainHandler().isAcidRainActive()) return false;
+
+        boolean isProtectedFromRain = false;
+        for (int y = player.getEyeLocation().getBlockY(); y <= player.getWorld().getMaxHeight(); y++) {
+            Block blockAbove = player.getWorld().getBlockAt(player.getLocation().getBlockX(), y, player.getLocation().getBlockZ());
+            if (blockAbove.getType().isSolid()) {
+                isProtectedFromRain = true;
+                break;
+            }
+        }
+
+        return !isProtectedFromRain;
     }
 
     private static boolean isBlockInWater(Block block) {

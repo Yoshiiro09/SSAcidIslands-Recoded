@@ -43,9 +43,7 @@ public final class TouchedWaterListener implements Listener {
     }
 
     private void checkForWater(Player player) {
-        if (PlayerUtils.isInWater(player)) {
-            AcidDamageTask.createTask(player);
-        }
+        if (PlayerUtils.isInWater(player) || PlayerUtils.isInRain(player)) AcidDamageTask.createTask(player);
     }
 
 }
