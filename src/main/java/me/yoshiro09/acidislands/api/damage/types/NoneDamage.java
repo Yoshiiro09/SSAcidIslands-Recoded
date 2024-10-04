@@ -10,5 +10,9 @@ public class NoneDamage extends BaseDamage {
     }
 
     @Override
-    public void hit() {}
+    public void hit() {
+    }
+
+    @Override
+    public void reset() {}
 }

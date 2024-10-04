@@ -50,7 +50,7 @@
   </build>
 
   <repositories>
-      <!-- PAPERMC 1.19 -->
+      <!-- PAPERMC -->
       <repository>
           <id>papermc-repo</id>
           <url>https://repo.papermc.io/repository/maven-public/</url>
@@ -68,11 +68,11 @@
   </repositories>
 
   <dependencies>
-      <!-- PAPERMC 1.19 -->
+      <!-- PAPERMC 1.21 -->
       <dependency>
           <groupId>io.papermc.paper</groupId>
           <artifactId>paper-api</artifactId>
-          <version>1.19-R0.1-SNAPSHOT</version>
+          <version>1.21.1-R0.1-SNAPSHOT</version>
           <scope>provided</scope>
       </dependency>
 

@@ -13,4 +13,5 @@ public abstract class BaseDamage {
     }
 
     public abstract void hit();
+    public abstract void reset();
 }

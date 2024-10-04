@@ -15,9 +15,12 @@ public enum DamageType {
         if (Objects.isNull(damageType)) return new DefaultDamage(player, DEFAULT);
 
         switch (damageType.toUpperCase()) {
-            case "POISON": return new PoisonDamage(player, POISON);
-            case "NONE": return new NoneDamage(player, NONE);
-            default: return new DefaultDamage(player, DEFAULT);
+            case "POISON":
+                return new PoisonDamage(player, POISON);
+            case "NONE":
+                return new NoneDamage(player, NONE);
+            default:
+                return new DefaultDamage(player, DEFAULT);
         }
     }
 }

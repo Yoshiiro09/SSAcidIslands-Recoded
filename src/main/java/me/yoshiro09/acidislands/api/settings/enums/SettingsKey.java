@@ -11,6 +11,8 @@ public enum SettingsKey {
     ACIDRAIN_MSG_STARTED("rain.messages.acidrain-started", "&e&lAcidIsland | &7Una pioggia acida è iniziata nel mondo &fIsola&7. Mettiti al riparo prima che sia troppo tardi."),
     ACIDRAIN_MSG_ENDED("rain.messages.acidrain-ended", "&e&lAcidIsland | &7La pioggia acida nel mondo &fIsola &7è finalmente terminata."),
 
+    PURIFYINGCONDUITS_MSG_ACTBAR_IN_PURIFIED_WATER("purifyngconduits.messages.actbar-in-purified-water", "&7L'&fAcqua &7intorno a te è stata purificata."),
+    PURIFYINGCONDUITS_MSG_PLACE_ONLY_IN_ISLAND("purifyngconduits.messages.place-only-in-island", "&7L'&fAcqua &7intorno a te è stata purificata."),
     ;
 
     final String defaultValue;

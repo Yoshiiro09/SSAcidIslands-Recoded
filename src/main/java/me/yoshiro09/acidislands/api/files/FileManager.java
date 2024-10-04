@@ -8,34 +8,27 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class FileManager {
-    public enum FileType {
-        CONFIG("config.yml"), CACHE_PURIFYINGCONDUIT("cache/purifyingConduit.yml");
-
-        private final String path;
-
-        FileType(String path) {
-            this.path = path;
-        }
-
-        public String getPath() {
-            return path;
-        }
-    }
-
     private static final Map<FileType, FileManager> files = new HashMap<>();
-
     private final String filePath;
-    private File file;
+    private final File file;
     private YamlConfiguration yamlConfiguration;
-
     public FileManager(String filePath) {
         this.filePath = filePath;
         this.file = new File(AcidIslandsMain.getInstance().getModuleFolder(), filePath);
     }
 
+    public static void loadFiles() {
+        for (FileType type : FileType.values())
+            files.put(type, new FileManager(type.getPath()).loadConfiguration());
+    }
+
+    public static FileManager getFileManager(FileType type) {
+        return files.get(type);
+    }
+
     public FileManager loadConfiguration() {
         final AcidIslandsMain module = AcidIslandsMain.getInstance();
-        if(!file.exists())  module.saveResource(filePath);
+        if (!file.exists()) module.saveResource(filePath);
         this.yamlConfiguration = YamlConfiguration.loadConfiguration(file);
         return this;
     }
@@ -53,12 +46,17 @@ public class FileManager {
         }
     }
 
-    public static void loadFiles() {
-        for (FileType type : FileType.values())
-            files.put(type, new FileManager(type.getPath()).loadConfiguration());
-    }
+    public enum FileType {
+        CONFIG("config.yml"), CACHE_PURIFYINGCONDUIT("cache/purifyingConduit.yml");
 
-    public static FileManager getFileManager(FileType type) {
-        return files.get(type);
+        private final String path;
+
+        FileType(String path) {
+            this.path = path;
+        }
+
+        public String getPath() {
+            return path;
+        }
     }
 }

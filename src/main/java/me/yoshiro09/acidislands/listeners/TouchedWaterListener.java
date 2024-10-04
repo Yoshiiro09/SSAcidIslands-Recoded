@@ -21,7 +21,8 @@ public final class TouchedWaterListener implements Listener {
         final Location from = event.getFrom();
         final Location to = event.getTo();
 
-        if (Objects.isNull(to) || PlayerUtils.isSameLocation(from, to) || !PlayerUtils.canTakeDamage(event.getPlayer())) return;
+        if (Objects.isNull(to) || PlayerUtils.isSameLocation(from, to) || !PlayerUtils.canTakeDamage(event.getPlayer()))
+            return;
 
         checkForWater(event.getPlayer());
     }

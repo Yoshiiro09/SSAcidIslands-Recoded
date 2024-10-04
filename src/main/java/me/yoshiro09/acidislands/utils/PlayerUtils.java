@@ -26,7 +26,8 @@ public class PlayerUtils {
     }
 
     public static boolean isInRain(Player player) {
-        if (!player.getWorld().hasStorm() || !AcidIslandsAPI.getInstance().getAcidRainHandler().isAcidRainActive()) return false;
+        if (!player.getWorld().hasStorm() || !AcidIslandsAPI.getInstance().getAcidRainHandler().isAcidRainActive())
+            return false;
 
         boolean isProtectedFromRain = false;
         for (int y = player.getEyeLocation().getBlockY(); y <= player.getWorld().getMaxHeight(); y++) {

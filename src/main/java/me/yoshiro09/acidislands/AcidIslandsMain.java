@@ -15,15 +15,20 @@ import org.bukkit.plugin.java.JavaPlugin;
 
 public final class AcidIslandsMain extends PluginModule {
     private static AcidIslandsMain instance;
-    private JavaPlugin plugin;
 
     static {
         ConfigurationSerialization.registerClass(PurifyingConduit.class, "PurifyingConduit");
     }
 
+    private JavaPlugin plugin;
+
     public AcidIslandsMain() {
         super("acidislands", "Yoshiiro_");
         instance = this;
+    }
+
+    public static AcidIslandsMain getInstance() {
+        return instance;
     }
 
     @Override
@@ -32,17 +37,20 @@ public final class AcidIslandsMain extends PluginModule {
         try {
             FileManager.loadFiles();
             final AcidIslandsAPI api = new AcidIslandsAPI();
-            api.loadPurifyingConduits();
+            api.getPurifyingConduitManager().loadPurifyingConduits();
+            api.getPurifyingConduitManager().loadPurifyingConduitLevels();
         } catch (IllegalAccessException e) {
             throw new RuntimeException(e);
         }
     }
 
     @Override
-    public void onReload(SuperiorSkyblock superiorSkyblock) {}
+    public void onReload(SuperiorSkyblock superiorSkyblock) {
+    }
 
     @Override
-    public void onDisable(SuperiorSkyblock superiorSkyblock) {}
+    public void onDisable(SuperiorSkyblock superiorSkyblock) {
+    }
 
     @Override
     public Listener[] getModuleListeners(SuperiorSkyblock superiorSkyblock) {
@@ -61,9 +69,5 @@ public final class AcidIslandsMain extends PluginModule {
 
     public JavaPlugin getPlugin() {
         return plugin;
-    }
-
-    public static AcidIslandsMain getInstance() {
-        return instance;
     }
 }

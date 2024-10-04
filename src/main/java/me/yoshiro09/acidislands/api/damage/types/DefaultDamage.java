@@ -16,12 +16,18 @@ public class DefaultDamage extends BaseDamage {
         final SettingsHandler settingsHandler = AcidIslandsAPI.getInstance().getSettingsHandler();
 
         this.damageMultiplier = settingsHandler.getSettingAsDouble(SettingsKey.DAMAGE_DEFAULT_MULTIPLIER);
-        this.lastDamage = settingsHandler.getSettingAsDouble(SettingsKey.DAMAGE_DEFAULT_FIRSTDAMAGE);
+        reset();
     }
 
     @Override
     public void hit() {
         this.player.damage(this.lastDamage);
         this.lastDamage *= this.damageMultiplier;
+    }
+
+    @Override
+    public void reset() {
+        final SettingsHandler settingsHandler = AcidIslandsAPI.getInstance().getSettingsHandler();
+        this.lastDamage = settingsHandler.getSettingAsDouble(SettingsKey.DAMAGE_DEFAULT_FIRSTDAMAGE);
     }
 }

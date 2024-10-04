@@ -13,8 +13,6 @@ import java.util.List;
 import java.util.Objects;
 
 public class PoisonDamage extends BaseDamage {
-    // private final int duration;
-    // private final int level;
     private final List<String> levels;
     private long startTime;
 
@@ -22,10 +20,8 @@ public class PoisonDamage extends BaseDamage {
         super(player, type);
         final SettingsHandler settingsHandler = AcidIslandsAPI.getInstance().getSettingsHandler();
 
-        // this.duration = settingsHandler.getSettingAsInt(SettingsKey.DAMAGE_POISON_DURATION);
-        // this.level = settingsHandler.getSettingAsInt(SettingsKey.DAMAGE_POISON_LEVEL);
         this.levels = settingsHandler.getSettingAsList(SettingsKey.DAMAGE_POISON_LEVELS);
-        this.startTime = System.currentTimeMillis();
+        reset();
     }
 
     @Override
@@ -35,6 +31,11 @@ public class PoisonDamage extends BaseDamage {
 
         if (player.getHealth() <= 1) player.damage(player.getHealth());
         else this.player.addPotionEffect(potion);
+    }
+
+    @Override
+    public void reset() {
+        this.startTime = System.currentTimeMillis();
     }
 
     private PotionEffect getPotionEffect() {
@@ -55,7 +56,8 @@ public class PoisonDamage extends BaseDamage {
                 diff = secondsPassed - afterSeconds;
                 foundArgs[0] = potionDuration;
                 foundArgs[1] = potionLevel;
-            } catch (Exception ign) {}
+            } catch (Exception ign) {
+            }
         }
 
         return foundArgs[0] == -1 ? null : new PotionEffect(PotionEffectType.POISON, foundArgs[0] * 20, foundArgs[1]);

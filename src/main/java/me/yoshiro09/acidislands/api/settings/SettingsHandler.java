@@ -3,7 +3,6 @@ package me.yoshiro09.acidislands.api.settings;
 import me.yoshiro09.acidislands.AcidIslandsMain;
 import me.yoshiro09.acidislands.api.files.FileManager;
 import me.yoshiro09.acidislands.api.settings.enums.SettingsKey;
-import me.yoshiro09.acidislands.utils.FileLoader;
 import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.plugin.java.JavaPlugin;
 
@@ -66,7 +65,7 @@ public class SettingsHandler {
         String val = this.settings.get(key);
         val = val.substring(1, val.length() - 2);
         final List<String> arr = new ArrayList<>();
-        for (String row : val.split(", ")) arr.add(row);
+        Collections.addAll(arr, val.split(", "));
         return arr;
     }
 }

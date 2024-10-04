@@ -39,3 +39,41 @@ rain:
   messages:
     acidrain-started: "&e&lAcidIsland | &7Una pioggia acida è iniziata nel mondo &fIsola&7. Mettiti al riparo prima che sia troppo tardi."
     acidrain-ended: "&e&lAcidIsland | &7La pioggia acida nel mondo &fIsola &7è finalmente terminata."
+
+# In questa sezione puoi configurare tutte le funzioni dei PurifyingConduits, ovvero i condotti marini che purificano l'acqua entro un certo raggio.
+# I conduits possono essere piazzati solo nelle isole, per piazzarli anche altrove bisogna avere il permesso: 'acidislands.purifyingconduit.bypass-place', ma saranno condotti puramente vanilla.
+purifyngconduits:
+  # Messaggi che verranno inviati in chat agli utenti online in determinate occasioni.
+  messages:
+    actbar-in-purified-water: "&7L'&fAcqua &7intorno a te è stata purificata."
+    place-only-in-island: "&e&lAcidIsland | &7Puoi piazzare i &fCondotti Purificatori &7solo nelle isole."
+  # Puoi configurare come meglio vuoi le caratteristiche dei vari livelli da qui.
+  levels:
+    # LIVELLO 1
+    1:
+      # Raggio purificazione dell'acqua.
+      range: 5
+    # LIVELLO 2
+    2:
+      # Raggio purificazione dell'acqua.
+      range: 8
+      # Prezzo upgrade da livello 1 a livello 2
+      price: 5000
+    # LIVELLO 3
+    3:
+      # Raggio purificazione dell'acqua.
+      range: 10
+      # Prezzo upgrade da livello 2 a livello 3
+      price: 10000
+    # LIVELLO 4
+    4:
+      # Raggio purificazione dell'acqua.
+      range: 15
+      # Prezzo upgrade da livello 3 a livello 4
+      price: 250000
+    # LIVELLO 5
+    5:
+      # Raggio purificazione dell'acqua.
+      range: 20
+      # Prezzo upgrade da livello 4 a livello 5
+      price: 50000
