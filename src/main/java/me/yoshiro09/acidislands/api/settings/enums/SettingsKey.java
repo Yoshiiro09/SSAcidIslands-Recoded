@@ -12,7 +12,8 @@ public enum SettingsKey {
     ACIDRAIN_MSG_ENDED("rain.messages.acidrain-ended", "&e&lAcidIsland | &7La pioggia acida nel mondo &fIsola &7è finalmente terminata."),
 
     PURIFYINGCONDUITS_MSG_ACTBAR_IN_PURIFIED_WATER("purifyngconduits.messages.actbar-in-purified-water", "&7L'&fAcqua &7intorno a te è stata purificata."),
-    PURIFYINGCONDUITS_MSG_PLACE_ONLY_IN_ISLAND("purifyngconduits.messages.place-only-in-island", "&7L'&fAcqua &7intorno a te è stata purificata."),
+    PURIFYINGCONDUITS_MSG_PLACE_ONLY_IN_ISLAND("purifyngconduits.messages.place-only-in-island", "&e&lAcidIsland | &7Puoi piazzare i &fCondotti Purificatori &7solo nelle isole."),
+    PURIFYINGCONDUITS_MSG_CANT_INTERACT_OTHER_ISLANDS("purifyngconduits.messages.cant-interact-other-islands", "&e&lAcidIsland | &7Non puoi interagire con i &fCondotti Purificatori &7delle altre isole."),
     ;
 
     final String defaultValue;

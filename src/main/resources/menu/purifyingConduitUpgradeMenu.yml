@@ -1,0 +1,52 @@
+######################################################
+# Per i colori HEX usa il formato '&#<code>', grazie #
+######################################################
+# Esempio:                                           #
+# messaggio: '&#123456Hello, World!'                 #
+######################################################
+
+# 'title' è il nome che apparirà in cima alla GUI.
+#
+# Placeholders:
+# %stripped_generator_name%
+title: 'Potenzia Hopper'
+# Questa è la dimensione della GUI. Per favore, usa un multiplo di 9.
+slots: 36
+
+variables:
+  plus: "&a+"
+  minus: "&c-"
+  maxed: "MAX"
+
+pages_buttons:
+  close_button:
+    # Trovi la lista dei materiali qui: https://hub.spigotmc.org/javadocs/bukkit/org/bukkit/Material.html
+    item: BARRIER
+    display_name: '&cX'
+    lore:
+      - '&7Clicca qui per chiudere.'
+    slot: 31
+    enabled: true
+    customModelData: 0
+  upgrade:
+    # Trovi la lista dei materiali qui: https://hub.spigotmc.org/javadocs/bukkit/org/bukkit/Material.html
+    item: PAPER
+    display_name: '&aPotenzia'
+    lore:
+      - "&f"
+      - "&fProssimo livello&7: &e%next-level%"
+      - "&fRaggio d'azione&7: &e%next-range% &8(%range-difference%&8)"
+      - "&fPrezzo&7: &e%upgrade-price%"
+      - "&f"
+      - '&7Clicca qui per potenziare.'
+    slot: 13
+    enabled: true
+    customModelData: 0
+  background:
+    # Trovi la lista dei materiali qui: https://hub.spigotmc.org/javadocs/bukkit/org/bukkit/Material.html
+    item: BLACK_STAINED_GLASS_PANE
+    display_name: '&f '
+    lore: []
+    slots: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 32, 33, 34, 35]
+    enabled: true
+    customModelData: 0

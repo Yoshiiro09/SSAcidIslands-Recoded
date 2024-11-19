@@ -47,7 +47,8 @@ public class FileManager {
     }
 
     public enum FileType {
-        CONFIG("config.yml"), CACHE_PURIFYINGCONDUIT("cache/purifyingConduit.yml");
+        CONFIG("config.yml"), CACHE_PURIFYINGCONDUIT("cache/purifyingConduit.yml"),
+        MENU_PURIFYINGCONDUITUPGRADE("menu/purifyingConduitUpgradeMenu.yml");
 
         private final String path;
 

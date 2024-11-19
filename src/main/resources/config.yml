@@ -47,6 +47,7 @@ purifyngconduits:
   messages:
     actbar-in-purified-water: "&7L'&fAcqua &7intorno a te è stata purificata."
     place-only-in-island: "&e&lAcidIsland | &7Puoi piazzare i &fCondotti Purificatori &7solo nelle isole."
+    cant-interact-other-islands: "&e&lAcidIsland | &7Non puoi interagire con i &fCondotti Purificatori &7delle altre isole."
   # Puoi configurare come meglio vuoi le caratteristiche dei vari livelli da qui.
   levels:
     # LIVELLO 1
@@ -70,10 +71,20 @@ purifyngconduits:
       # Raggio purificazione dell'acqua.
       range: 15
       # Prezzo upgrade da livello 3 a livello 4
-      price: 250000
+      price: 25000
     # LIVELLO 5
     5:
       # Raggio purificazione dell'acqua.
       range: 20
       # Prezzo upgrade da livello 4 a livello 5
       price: 50000
+
+# In questa sezione puoi potenziare o depotenziare i mob durante una pioggia acida.
+acid_buffed_mobs:
+  # Nome del mob.
+  ZOMBIE:
+    # Effetti da dare al mob nel formato 'EFFETTO:LIVELLO'
+    effects:
+      - SPEED:3
+      - INCREASE_DAMAGE:2
+      - REGENERATION:3

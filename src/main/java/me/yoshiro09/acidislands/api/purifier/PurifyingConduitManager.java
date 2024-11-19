@@ -30,6 +30,12 @@ public class PurifyingConduitManager {
         this.purifyingConduitsList.add(conduit);
     }
 
+    public PurifyingConduit getPurifyingConduitFromLocation(Location location) {
+        for (PurifyingConduit pc : this.purifyingConduitsList)
+            if (pc.isSameLocation(location)) return pc;
+        return null;
+    }
+
     public List<PurifyingConduit> removePurifyingConduitsInIsland(UUID islandId) {
         List<PurifyingConduit> conduitsToRemove = this.purifyingConduitsList.stream()
                 .filter(pc -> pc.getIslandId().equals(islandId))

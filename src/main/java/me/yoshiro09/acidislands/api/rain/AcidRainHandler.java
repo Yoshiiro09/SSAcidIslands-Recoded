@@ -1,9 +1,12 @@
 package me.yoshiro09.acidislands.api.rain;
 
 import me.yoshiro09.acidislands.api.AcidIslandsAPI;
+import me.yoshiro09.acidislands.api.events.AcidRainStartEvent;
+import me.yoshiro09.acidislands.api.events.AcidRainStopEvent;
 import me.yoshiro09.acidislands.api.settings.SettingsHandler;
 import me.yoshiro09.acidislands.api.settings.enums.SettingsKey;
 import me.yoshiro09.acidislands.utils.MessagesSender;
+import org.bukkit.Bukkit;
 import org.bukkit.World;
 
 import java.util.Random;
@@ -36,6 +39,7 @@ public class AcidRainHandler {
             if (this.acidRainActive) {
                 this.acidRainActive = false;
                 MessagesSender.broadcast(settingsHandler.getSetting(SettingsKey.ACIDRAIN_MSG_ENDED));
+                Bukkit.getPluginManager().callEvent(new AcidRainStopEvent(Bukkit.getWorld(this.worldName)));
             }
             return;
         }
@@ -45,5 +49,6 @@ public class AcidRainHandler {
 
         this.acidRainActive = true;
         MessagesSender.broadcast(settingsHandler.getSetting(SettingsKey.ACIDRAIN_MSG_STARTED));
+        Bukkit.getPluginManager().callEvent(new AcidRainStartEvent(Bukkit.getWorld(this.worldName)));
     }
 }

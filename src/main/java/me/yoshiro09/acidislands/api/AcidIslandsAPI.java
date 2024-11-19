@@ -1,6 +1,7 @@
 package me.yoshiro09.acidislands.api;
 
 import me.yoshiro09.acidislands.AcidIslandsMain;
+import me.yoshiro09.acidislands.api.mob.AcidBuffMobManager;
 import me.yoshiro09.acidislands.api.purifier.PurifyingConduit;
 import me.yoshiro09.acidislands.api.purifier.PurifyingConduitManager;
 import me.yoshiro09.acidislands.api.rain.AcidRainHandler;
@@ -14,6 +15,7 @@ public class AcidIslandsAPI {
     private final SettingsHandler settingsHandler;
     private final AcidRainHandler acidRainHandler;
     private final PurifyingConduitManager purifyingConduitManager;
+    private final AcidBuffMobManager acidBuffMobManager;
 
     public AcidIslandsAPI() throws IllegalAccessException {
         final String className = getClass().getSimpleName();
@@ -26,6 +28,8 @@ public class AcidIslandsAPI {
             this.acidRainHandler = new AcidRainHandler();
             this.purifyingConduitManager = new PurifyingConduitManager();
             this.purifyingConduitManager.loadPurifyingConduits();
+            this.acidBuffMobManager = new AcidBuffMobManager();
+            this.acidBuffMobManager.loadSettings();
 
             AcidIslandsMain.getInstance().getPlugin().getLogger().info(String.format("[ACIDISLANDS-RECODED] %s: Classe inizializzata!", className));
         } else {
@@ -47,5 +51,9 @@ public class AcidIslandsAPI {
 
     public AcidRainHandler getAcidRainHandler() {
         return acidRainHandler;
+    }
+
+    public AcidBuffMobManager getAcidBuffMobManager() {
+        return acidBuffMobManager;
     }
 }
